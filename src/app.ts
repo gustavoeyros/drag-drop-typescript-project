@@ -159,6 +159,8 @@ class ProjectList {
     const listEl = document.getElementById(
       `${this.type}-projects-list`
     )! as HTMLUListElement;
+    // para não salvar o conteúdo da lista renderizada anteriormente
+    listEl.innerHTML = "";
     for (const projectItems of this.assignedProjects) {
       const listItem = document.createElement("li");
       listItem.textContent = projectItems.title;
