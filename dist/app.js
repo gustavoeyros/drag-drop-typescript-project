@@ -41,6 +41,27 @@ function autobind(_, _2, descriptor) {
     };
     return adjDescriptor;
 }
+class ProjectList {
+    constructor(type) {
+        this.type = type;
+        this.templateEl = document.getElementById("project-list");
+        this.hostEl = document.getElementById("app");
+        const importedNode = document.importNode(this.templateEl.content, true);
+        this.element = importedNode.firstElementChild;
+        this.element.id = `${this.type}-projects`;
+        this.attach();
+        this.renderContent();
+    }
+    renderContent() {
+        const listId = `${this.type}-projects-list`;
+        this.element.querySelector("ul").id = listId;
+        this.element.querySelector("h2").textContent =
+            this.type.toUpperCase() + " PROJECTS";
+    }
+    attach() {
+        this.hostEl.insertAdjacentElement("beforeend", this.element);
+    }
+}
 class ProjectInput {
     constructor() {
         this.templateEl = document.getElementById("project-input");
@@ -52,7 +73,7 @@ class ProjectInput {
         this.descInputEl = this.formEl.querySelector("#description");
         this.peopleInputEl = this.formEl.querySelector("#people");
         this.configure();
-        this.anexar();
+        this.attach();
     }
     gatherUserInput() {
         const enteredTitle = this.titleInputEl.value;
@@ -100,7 +121,7 @@ class ProjectInput {
     configure() {
         this.formEl.addEventListener("submit", this.submitHandler.bind(this));
     }
-    anexar() {
+    attach() {
         this.hostEl.insertAdjacentElement("afterbegin", this.formEl);
     }
 }
@@ -108,3 +129,5 @@ __decorate([
     autobind
 ], ProjectInput.prototype, "submitHandler", null);
 const projectInput = new ProjectInput();
+const activeProjectList = new ProjectList("active");
+const finishedProjectList = new ProjectList("finished");
