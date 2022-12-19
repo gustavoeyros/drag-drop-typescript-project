@@ -33,16 +33,16 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  background: #fff5f9;
 }
 
 button {
   font: inherit;
-  background: #ff0062;
-  border: 1px solid #ff0062;
+  background: #104547;
+  border: 1px solid #104547;
   cursor: pointer;
   color: white;
   padding: 0.75rem 1rem;
+  border-radius: 0.3em;
 }
 
 button:focus {
@@ -51,17 +51,18 @@ button:focus {
 
 button:hover,
 button:active {
-  background: #a80041;
-  border-color: #a80041;
+  background: #0B3132;
+  border-color: #0B3132;
+  transition: 0.5s ;
 }
 
 .projects {
   margin: 1rem;
-  border: 1px solid #ff0062;
+  border: 1px solid rgba(255, 255, 0, 0.438);
 }
 
 .projects header {
-  background: #ff0062;
+  background: rgb(184, 184, 32);;
   height: 3.5rem;
   display: flex;
   justify-content: center;
@@ -69,12 +70,14 @@ button:active {
 }
 
 #finished-projects {
-  border-color: #0044ff;
+  border-color: rgb(34, 167, 34);
 }
 
+
 #finished-projects header {
-  background: #0044ff;
+  background: rgb(34, 167, 34);
 }
+
 
 .projects h2 {
   margin: 0;
@@ -95,7 +98,7 @@ button:active {
 }
 
 .projects li h2 {
-  color: #ff0062;
+  color: black;
   margin: 0.5rem 0;
 }
 
@@ -123,6 +126,6 @@ button:active {
 #user-input {
   margin: 1rem;
   padding: 1rem;
-  border: 1px solid #ff0062;
   background: #f7f7f7;
+  border-radius: 0.5em;
 }
