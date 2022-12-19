@@ -100,6 +100,14 @@ class baseComponent {
     }
 }
 class ProjectItem extends baseComponent {
+    get persons() {
+        if (this.project.people === 1) {
+            return "1 pessoa atribuída";
+        }
+        else {
+            return `${this.project.people} pessoas atribuídas`;
+        }
+    }
     constructor(hostId, project) {
         super("single-project", hostId, false, project.id);
         this.project = project;
@@ -109,8 +117,7 @@ class ProjectItem extends baseComponent {
     configure() { }
     renderContent() {
         this.element.querySelector("h2").textContent = this.project.title;
-        this.element.querySelector("h3").textContent =
-            this.project.people.toString() + " pessoas atribuídas";
+        this.element.querySelector("h3").textContent = this.persons;
         this.element.querySelector("p").textContent = this.project.description;
     }
 }

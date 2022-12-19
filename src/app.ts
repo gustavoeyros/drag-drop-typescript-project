@@ -166,6 +166,14 @@ abstract class baseComponent<T extends HTMLElement, U extends HTMLElement> {
 class ProjectItem extends baseComponent<HTMLUListElement, HTMLLIElement> {
   private project: Project;
 
+  get persons() {
+    if (this.project.people === 1) {
+      return "1 pessoa atribuída";
+    } else {
+      return `${this.project.people} pessoas atribuídas`;
+    }
+  }
+
   constructor(hostId: string, project: Project) {
     super("single-project", hostId, false, project.id);
     this.project = project;
@@ -178,8 +186,7 @@ class ProjectItem extends baseComponent<HTMLUListElement, HTMLLIElement> {
 
   renderContent() {
     this.element.querySelector("h2")!.textContent = this.project.title;
-    this.element.querySelector("h3")!.textContent =
-      this.project.people.toString() + " pessoas atribuídas";
+    this.element.querySelector("h3")!.textContent = this.persons;
     this.element.querySelector("p")!.textContent = this.project.description;
   }
 }
