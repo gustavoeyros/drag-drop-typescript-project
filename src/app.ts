@@ -49,10 +49,39 @@ class ProjectInput {
     this.anexar();
   }
 
+  // é necessário colocar uma possibilidade de retorno vazio, pois, caso o usuário digite um campo errado, ele irá receber um retorno vazio juntamente com o erro
+  private gatherUserInput(): [string, string, number] | void {
+    const enteredTitle = this.titleInputEl.value;
+    const enteredDesc = this.descInputEl.value;
+    const enteredPeople = this.peopleInputEl.value;
+    //validation
+    if (
+      enteredTitle.trim().length === 0 ||
+      enteredDesc.trim().length === 0 ||
+      enteredPeople.trim().length === 0
+    ) {
+      alert("Todos os campos são obrigatórios.");
+      return;
+    } else {
+      return [enteredTitle, enteredDesc, +enteredPeople];
+    }
+  }
+
+  private clearInputs() {
+    this.titleInputEl.value = "";
+    this.descInputEl.value = "";
+    this.peopleInputEl.value = "";
+  }
+
   @autobind
   private submitHandler(event: Event) {
     event.preventDefault();
-    console.log(this.titleInputEl.value);
+    const userInput = this.gatherUserInput();
+    if (Array.isArray(userInput)) {
+      const [title, desc, people] = userInput;
+      console.log(title, desc, people);
+      this.clearInputs();
+    }
   }
 
   private configure() {

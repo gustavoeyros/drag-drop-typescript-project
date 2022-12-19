@@ -29,9 +29,33 @@ class ProjectInput {
         this.configure();
         this.anexar();
     }
+    gatherUserInput() {
+        const enteredTitle = this.titleInputEl.value;
+        const enteredDesc = this.descInputEl.value;
+        const enteredPeople = this.peopleInputEl.value;
+        if (enteredTitle.trim().length === 0 ||
+            enteredDesc.trim().length === 0 ||
+            enteredPeople.trim().length === 0) {
+            alert("Todos os campos são obrigatórios.");
+            return;
+        }
+        else {
+            return [enteredTitle, enteredDesc, +enteredPeople];
+        }
+    }
+    clearInputs() {
+        this.titleInputEl.value = "";
+        this.descInputEl.value = "";
+        this.peopleInputEl.value = "";
+    }
     submitHandler(event) {
         event.preventDefault();
-        console.log(this.titleInputEl.value);
+        const userInput = this.gatherUserInput();
+        if (Array.isArray(userInput)) {
+            const [title, desc, people] = userInput;
+            console.log(title, desc, people);
+            this.clearInputs();
+        }
     }
     configure() {
         this.formEl.addEventListener("submit", this.submitHandler.bind(this));
