@@ -161,7 +161,7 @@ class ProjectList extends baseComponent {
     }
     dropHandler(event) {
         const projectId = event.dataTransfer.getData("text/plain");
-        projectState.moveProject(projectId, this.type === "active" ? ProjectStatus.Active : ProjectStatus.Finished);
+        projectState.moveProject(projectId, this.type === "ativos" ? ProjectStatus.Active : ProjectStatus.Finished);
     }
     dragLeaveHandler(_) {
         const listEl = this.element.querySelector("ul");
@@ -171,7 +171,7 @@ class ProjectList extends baseComponent {
         const listId = `${this.type}-projects-list`;
         this.element.querySelector("ul").id = listId;
         this.element.querySelector("h2").textContent =
-            this.type.toUpperCase() + " PROJECTS";
+            "PROJETOS " + this.type.toUpperCase();
     }
     configure() {
         this.element.addEventListener("dragover", this.dragOverHandler);
@@ -179,7 +179,7 @@ class ProjectList extends baseComponent {
         this.element.addEventListener("drop", this.dropHandler);
         projectState === null || projectState === void 0 ? void 0 : projectState.addListener((projects) => {
             const relevantProjects = projects.filter((prj) => {
-                if (this.type === "active") {
+                if (this.type === "ativos") {
                     return prj.status === ProjectStatus.Active;
                 }
                 return prj.status === ProjectStatus.Finished;
@@ -266,5 +266,5 @@ __decorate([
     autobind
 ], ProjectInput.prototype, "submitHandler", null);
 const projectInput = new ProjectInput();
-const activeProjectList = new ProjectList("active");
-const finishedProjectList = new ProjectList("finished");
+const activeProjectList = new ProjectList("ativos");
+const finishedProjectList = new ProjectList("finalizados");

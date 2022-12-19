@@ -237,7 +237,7 @@ class ProjectList
 {
   assignedProjects: Project[];
 
-  constructor(private type: "active" | "finished") {
+  constructor(private type: "ativos" | "finalizados") {
     super("project-list", "app", false, `${type}-projects`);
     this.assignedProjects = [];
 
@@ -258,7 +258,7 @@ class ProjectList
     const projectId = event.dataTransfer!.getData("text/plain");
     projectState.moveProject(
       projectId,
-      this.type === "active" ? ProjectStatus.Active : ProjectStatus.Finished
+      this.type === "ativos" ? ProjectStatus.Active : ProjectStatus.Finished
     );
   }
 
@@ -272,7 +272,7 @@ class ProjectList
     const listId = `${this.type}-projects-list`;
     this.element.querySelector("ul")!.id = listId;
     this.element.querySelector("h2")!.textContent =
-      this.type.toUpperCase() + " PROJECTS";
+      "PROJETOS " + this.type.toUpperCase();
   }
 
   configure() {
@@ -281,7 +281,7 @@ class ProjectList
     this.element.addEventListener("drop", this.dropHandler);
     projectState?.addListener((projects: Project[]) => {
       const relevantProjects = projects.filter((prj) => {
-        if (this.type === "active") {
+        if (this.type === "ativos") {
           return prj.status === ProjectStatus.Active;
         }
         return prj.status === ProjectStatus.Finished;
@@ -392,5 +392,5 @@ class ProjectInput extends baseComponent<HTMLDivElement, HTMLFormElement> {
 }
 
 const projectInput = new ProjectInput();
-const activeProjectList = new ProjectList("active");
-const finishedProjectList = new ProjectList("finished");
+const activeProjectList = new ProjectList("ativos");
+const finishedProjectList = new ProjectList("finalizados");
