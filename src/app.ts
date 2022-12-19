@@ -233,7 +233,7 @@ class ProjectItem
 // project list class
 class ProjectList
   extends baseComponent<HTMLDivElement, HTMLElement>
-  implements Draggable
+  implements DragTarget
 {
   assignedProjects: Project[];
 
