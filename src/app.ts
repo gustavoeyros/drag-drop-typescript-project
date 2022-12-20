@@ -1,6 +1,6 @@
-import { ProjectInput } from "./components/project-input";
-import { ProjectList } from "./components/project-list";
+import { ProjectInput } from "./components/project-input.js";
+import { ProjectList } from "./components/project-list.js";
 
-const projectInput = new ProjectInput();
-const activeProjectList = new ProjectList("ativos");
-const finishedProjectList = new ProjectList("finalizados");
+new ProjectInput();
+new ProjectList("ativos");
+new ProjectList("finalizados");
