@@ -18,4 +18,5 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 <li>HTML</li>
 <li>CSS</li>
 <li>TypeScript</li>
+<li>Webpack</li>
 </ul>
