@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -265,6 +266,10 @@ class ProjectInput extends baseComponent {
 __decorate([
     autobind
 ], ProjectInput.prototype, "submitHandler", null);
+=======
+import { ProjectInput } from "./components/project-input";
+import { ProjectList } from "./components/project-list";
+>>>>>>> features
 const projectInput = new ProjectInput();
 const activeProjectList = new ProjectList("ativos");
 const finishedProjectList = new ProjectList("finalizados");

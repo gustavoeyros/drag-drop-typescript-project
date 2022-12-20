@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // drag & drop effect interfaces
 interface Draggable {
   dragStart(event: DragEvent): void;
@@ -390,6 +391,10 @@ class ProjectInput extends baseComponent<HTMLDivElement, HTMLFormElement> {
     }
   }
 }
+=======
+import { ProjectInput } from "./components/project-input";
+import { ProjectList } from "./components/project-list";
+>>>>>>> features
 
 const projectInput = new ProjectInput();
 const activeProjectList = new ProjectList("ativos");
